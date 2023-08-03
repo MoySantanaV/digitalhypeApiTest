@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import decoderRoutes from './Routes/decoderRoutes';
+import decoderRoutes from '../Routes/decoderRoutes';
 
 dotenv.config();
 
