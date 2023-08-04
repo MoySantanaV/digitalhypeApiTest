@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import decoderRoutes from '../Routes/decoderRoutes';
+import decoderRoutes from '../src/Routes/decoderRoutes';
 
 dotenv.config();
 
@@ -19,6 +19,6 @@ db.once('open', function () {
   console.log('Connected to MongoDB!');
 });
 
-app.use('/', decoderRoutes);
+app.use('/api', decoderRoutes);
 
 app.listen(3001, () => console.log('Server running on port 3001'));
