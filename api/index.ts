@@ -6,11 +6,6 @@ import decoderRoutes from '../src/Routes/decoderRoutes';
 
 dotenv.config();
 
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-
 mongoose.connect(process.env.MONGO_URL!);
 
 const db = mongoose.connection;
@@ -19,6 +14,19 @@ db.once('open', function () {
   console.log('Connected to MongoDB!');
 });
 
-app.use('/api', decoderRoutes);
+const app = express();
+app.use(express.json());
+
+app.use(cors({
+  origin: '*'
+}))
+
+app.get("/api", (req,res)=>{
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.send("server working");
+  });
 
 app.listen(3001, () => console.log('Server running on port 3001'));
+
+app.use('/api', decoderRoutes);
+
