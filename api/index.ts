@@ -21,12 +21,9 @@ app.use(cors({
   origin: '*'
 }))
 
-app.get("/api", (req,res)=>{
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.send("server working");
-  });
+
+app.use('/api', decoderRoutes);
 
 app.listen(3001, () => console.log('Server running on port 3001'));
 
-app.use('/api', decoderRoutes);
 
